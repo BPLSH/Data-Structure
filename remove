@@ -33,7 +33,7 @@ void remove(int data) {
 		if (delNode->data == data) {
 			free(delNode);
 			delNode = delNodeNext;
-			delNodeNext = delNode->next;
+			delNodeNext = delNodeNext->next;
 		}
 	}
 }
