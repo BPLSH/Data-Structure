@@ -1,0 +1,57 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct node
+{
+	int data;
+	struct node* next;
+
+} Node;
+Node *head;
+Node *temp;
+void add(int data, int index) {
+	Node * newNode = (Node *)malloc(sizeof(Node));
+	newNode->data = data;
+	newNode->next = NULL;
+
+	if (index == 1) {
+		head = newNode;
+	}
+	else {
+		temp->next = newNode;
+	}
+	temp = newNode;
+}
+void remove(int data) {
+	Node * delNode = head;
+	Node * delNodeNext = head->next;
+
+	if(head == NULL){
+		return;
+	}
+	while (delNodeNext != NULL) {
+		if (delNode->data == data) {
+			free(delNode);
+			delNode = delNodeNext;
+			delNodeNext = delNode->next;
+		}
+	}
+}
+void printList() {
+	temp = head;
+
+	for (int i = 0; temp != NULL; i++) { //왜 널? 동적할당 실패하면 널이라서 그런가
+		printf("[%d]번째 인덱스 값: %d\n", i+1, temp->data);
+		temp = (temp->next);
+	}
+}
+int main()
+{
+
+	add(10, 1);
+	add(15, 2);
+	add(20, 3);
+	add(25, 4);
+	remove(15);
+	printList();
+}
