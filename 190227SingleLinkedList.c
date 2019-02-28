@@ -13,18 +13,12 @@ Node* CreateNode(int data) {
 
 	return newNode;
 }
-void InsertNode(Node* newNode) {
-	
-	if (head->next == NULL) { 
-		head->next = newNode;
+void AppendNode(Node* newNode) {
+	Node* tmp = head;
+	while (tmp->next != NULL) {
+		tmp = tmp->next;
 	}
-	else {
-		Node* tmp = head;
-		while (tmp->next != NULL) {
-			tmp = tmp->next;
-		}
-		tmp->next = newNode;
-	}
+	tmp->next = newNode;
 }
 Node* RemoveNode(int data) { 
 	if (head == NULL) {
@@ -62,16 +56,12 @@ void PrintList() {
 int main(void) {
 	head = CreateNode(10);
 
-	InsertNode(CreateNode(20));
-	InsertNode(CreateNode(30));
-	InsertNode(CreateNode(40));
-	InsertNode(CreateNode(50));
-	InsertNode(CreateNode(60));
-	InsertNode(CreateNode(70));
-	InsertNode(CreateNode(80));
-	InsertNode(CreateNode(90));
-	InsertNode(CreateNode(100));
-
+	AppendNode(CreateNode(20));
+	AppendNode(CreateNode(30));
+	AppendNode(CreateNode(40));
+	AppendNode(CreateNode(50));
+	AppendNode(CreateNode(60));
+	AppendNode(CreateNode(70));
 	PrintList();
 	DestroyNode(RemoveNode(10));
 	PrintList();
